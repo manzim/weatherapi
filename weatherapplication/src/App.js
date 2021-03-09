@@ -41,13 +41,14 @@ function App() {
         <div className="">
           <div className="location-box">
             <div className="location">
-              New jersey
+              {weather.name}, {weather.weather.main}
              </div>
             <div className="date">
               {moment().format("dddd, MMMM Do YYYY, h:mm a")}
             </div>
             <div className="weather-box">
               <div className="temp"> 15* C </div>
+              <div className="">  </div>
               <div className="weather"> Sunny </div>
             </div>
 

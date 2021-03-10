@@ -9,14 +9,14 @@ body {
 }
 
 .app {
-  background-image: url('./resources/weatherbg.png');
+  background-image: url('./resources/cloud.jpg');
   background-size: cover;
   background-position: bottom;
   transition: 0.4 ease;
 }
 
 .app.warm {
-  background-image: url('./resources/weatherbg.png');
+  background-image: url('./resources/clear.jpg');
 }
 
 section {

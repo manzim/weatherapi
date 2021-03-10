@@ -26,34 +26,45 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className={
+      (typeof weather.main != "undefined")
+        ? ((weather.main.temp > 18)
+          ? 'app warm'
+          : 'app')
+        : 'app'
+    }>
       <section>
         <div className="search-box">
           <input
             type="text"
             className="search-bar"
-            placeholder="Search..."
+            placeholder="please type name of the city..."
             value={query}
             onChange={e => setQuery(e.target.value)}
             onKeyPress={search}
           />
         </div>
-        <div className="">
-          <div className="location-box">
-            <div className="location">
-              {weather.name}, {weather.weather.main}
-             </div>
-            <div className="date">
-              {moment().format("dddd, MMMM Do YYYY, h:mm a")}
+        {typeof weather.main != "undefined" ? (
+          <div>
+            <div className="">
+              <div className="location-box">
+                <div className="location">
+                  {weather.name}, {weather.sys.country}
+                </div>
+                <div className="date">
+                  {moment().format("dddd, MMMM Do YYYY, h:mm a")}
+                </div>
+                <div className="weather-box">
+                  <div className="temp"> {Math.round(weather.main.temp)}°C </div>
+                  <div className="">  </div>
+                  <div className="weather"> {weather.weather[0].main} </div>
+                </div>
+              </div>
             </div>
-            <div className="weather-box">
-              <div className="temp"> 15* C </div>
-              <div className="">  </div>
-              <div className="weather"> Sunny </div>
-            </div>
-
           </div>
-        </div>
+        )
+          : ''
+        }
       </section>
     </div>
   );
